@@ -45,7 +45,9 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
     }
+
     @Override
+    @Transactional(readOnly = true)
     public User getUserById(Long id) {
         Optional<User> user = userRepository.findById(id);
 
@@ -55,6 +57,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
         return user.get();
     }
+
     @Override
     @Transactional
     public void deleteUserById(long userId) {

@@ -50,11 +50,11 @@
             <br>
             <div>
                 <div class="list-group flex-column" id="list-tab" role="tablist">
-                    <div sec:authorize="hasAnyAuthority('ADMIN')">
+                    <div sec:authorize="hasRole('ADMIN')">
                         <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list"
                            href="#list-admin" role="tab" aria-controls="home">Admin</a>
                     </div>
-                    <div sec:authorize="hasAnyAuthority('ADMIN', 'USER')">
+                    <div sec:authorize="hasAnyRole('ADMIN', 'USER')">
                         <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list"
                            href="#list-profile-user" role="tab" aria-controls="profile"
                            onclick="document.location='/user'">User</a>
@@ -67,11 +67,11 @@
             <h1 class="h1adminPanel">Admin panel</h1>
 
             <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item" sec:authorize="hasAnyAuthority('ADMIN')">
+                <li class="nav-item" sec:authorize="hasRole('ADMIN')">
                     <a class="nav-link active" id="usersTable" data-toggle="tab" href="#adminPage" role="tab"
                        aria-controls="home" aria-selected="true">Users table</a>
                 </li>
-                <li class="nav-item" sec:authorize="hasAnyAuthority('ADMIN')">
+                <li class="nav-item" sec:authorize="hasRole('ADMIN')">
                     <a class="nav-link" id="newUser" data-toggle="tab" href="#addUser" role="tab"
                        aria-controls="profile" aria-selected="false">New User</a>
                 </li>
@@ -111,7 +111,8 @@
                     </div>
                 </div>
 
-                <div class="tab-pane fade" id="addUser" role="tabpanel" aria-labelledby="newUser" sec:authorize="hasAnyAuthority('ADMIN')">
+                <div class="tab-pane fade" id="addUser" role="tabpanel" aria-labelledby="newUser"
+                     sec:authorize="hasRole('ADMIN')">
                     <div class="card">
                         <div class="card-header">
                             <h5>Add new user</h5>
@@ -321,19 +322,19 @@
         crossorigin="anonymous"></script>
 
 <!-- My JavaScript -->
-<div sec:authorize="hasAnyAuthority('ADMIN')">
+<div sec:authorize="hasRole('ADMIN')">
     <script src="/static/js/adminPage.js" th:src="@{/static/js/adminPage.js}" type="text/javascript"></script>
 </div>
 
-<div sec:authorize="hasAnyAuthority('ADMIN')">
+<div sec:authorize="hasRole('ADMIN')">
     <script src="/static/js/newUser.js" th:src="@{/static/js/newUser.js}" type="text/javascript"></script>
 </div>
 
-<div sec:authorize="hasAnyAuthority('ADMIN')">
+<div sec:authorize="hasRole('ADMIN')">
     <script src="/static/js/editUser.js" th:src="@{/static/js/editUser.js}" type="text/javascript"></script>
 </div>
 
-<div sec:authorize="hasAnyAuthority('ADMIN')">
+<div sec:authorize="hasRole('ADMIN')">
     <script src="/static/js/deleteUser.js" th:src="@{/static/js/deleteUser.js}" type="text/javascript"></script>
 </div>
 
